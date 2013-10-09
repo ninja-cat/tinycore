@@ -1,0 +1,19 @@
+This dir contains everything needed to create a working instance of
+TinyCore Linux with any number of extensions in it.
+
+To prepare everything, you should just run 'make'. It will download all
+necessary distrs to downloads, populate tftpboot dir with everything needed to
+boot from PXE including opt.cpio.gz containing everything in opt dir.
+I recommend the first time run 'make -j4' so that downloads are run in
+parallel.
+
+To add some extensions, append a line to opt/tce/onboot.lst, make will download
+it and add to opt.cpio.gz.
+
+Any code that should be run on boot, should be placed at opt/bootlocal.sh. It
+will run in background while there may be a tty session in the foreground
+(which is suppressed by 'pause' in kernel cmdline).
+
+To run a QEMU VM to test this, run 'make boot'.
+
+If you want to log into it, use username 'tc', no password.

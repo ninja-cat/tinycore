@@ -1,0 +1,4 @@
+DEFAULT tinycore
+LABEL tinycore
+KERNEL vmlinuz64
+APPEND initrd=core64.gz,opt.cpio.gz nozswap nofstab noautologin pause pretce=../opt/tce

@@ -1,0 +1,5 @@
+downloads
+tftproot/core64.gz
+tftproot/pxelinux.0
+tftproot/vmlinuz64
+tftproot/opt.cpio.gz
