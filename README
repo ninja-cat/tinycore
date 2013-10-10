@@ -7,8 +7,10 @@ boot from PXE including opt.cpio.gz containing everything in opt dir.
 I recommend the first time run 'make -j4' so that downloads are run in
 parallel.
 
-To add some extensions, append a line to opt/tce/onboot.lst, make will download
-it and add to opt.cpio.gz.
+To add some extensions, append a line to pkgs.lst. After all dependencies for
+every tcz recorded be calcuted the final list of packages will be stored in
+opt/tce/onboot.lst. Then downloading packges listed in onboot.lst occurs and
+also adds them to opt.cpio.gz.
 
 Any code that should be run on boot, should be placed at opt/bootlocal.sh. It
 will run in background while there may be a tty session in the foreground

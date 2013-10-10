@@ -8,4 +8,4 @@ do
   `dd if=/dev/zero of=/dev/$i bs=4k`
 done
 
-poweroff
+#poweroff
