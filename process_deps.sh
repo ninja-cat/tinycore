@@ -31,7 +31,7 @@ do
     process_deps_for $pkg
 done
 
-cat $deps_file $pkgs_file|sort|uniq|grep -v KERNEL|uniq > t_deps.lst
+cat $deps_file $pkgs_file | sort | uniq | grep -v KERNEL > t_deps.lst
 
 cmp t_deps.lst opt/tce/onboot.lst
 
