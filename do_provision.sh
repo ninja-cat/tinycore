@@ -20,7 +20,7 @@ LABEL linux
   SAY WOW LOOK Now booting the kernel from EXTLINUX
   KERNEL vmlinuz
   INITRD initrd
-  APPEND ro root=/dev/mapper/vg-root
+  APPEND rootfstype=ext4 lvm root=/dev/mapper/vg-root ro
 EOF
 
 /lib/ld-linux.so.2 --library-path libs ./extlinux --install /mnt/boot/extlinux
