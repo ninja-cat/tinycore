@@ -8,7 +8,7 @@ $ pip install gunicorn
 
 Start:
 
-$ gunicorn provision:app
+$ gunicorn -b 0.0.0.0:8000 provision:app
 
 Usage: 
 
