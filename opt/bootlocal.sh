@@ -47,4 +47,4 @@ gateway=`netstat -r | grep ^default | awk '{print $2}'`
 
 /lib/ld-linux.so.2 --library-path libs ./aria2c --on-bt-download-complete ./do_provision.sh --event-poll=epoll --file-allocation=falloc --max-upload-limit=$speed --max-download-limit=$speed --seed-ratio=0.0 --seed-time=9999 http://$gateway/torrent.torrent 
 
-
+reboot

@@ -51,13 +51,8 @@ umount tmp_root
 
 gateway=`netstat -r | grep ^default | awk '{print $2}'`
 macaddr=`ifconfig eth0 | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'`
-wget http://$gateway/$macaddr.provisioned
-
-#wget --post-data "macaddr=$MACADDR&status=ready"
+wget http://$gateway:8000/pxe?mac=$macaddr
 
 sleep 10
 
-####reboot
-
-
-
+reboot
