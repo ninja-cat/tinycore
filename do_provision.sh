@@ -27,6 +27,11 @@ EOF
 
 cat mbr.bin > /dev/$DEV
 
+# too slow
+#xz -dc $dir/partition.xz > /dev/mapper/vg-root
+
+xz -d $dir/partition.xz
+
 dd if=$dir/partition of=/dev/mapper/vg-root bs=16M
 
 boot_part="UUID=$UUID /boot           ext4    defaults        0       2"
@@ -53,6 +58,6 @@ gateway=`netstat -r | grep ^default | awk '{print $2}'`
 macaddr=`ifconfig eth0 | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}'`
 wget http://$gateway:8000/pxe?mac=$macaddr
 
-sleep 10
+sleep 99
 
 reboot

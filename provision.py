@@ -23,7 +23,7 @@ http://127.0.0.1:8000/pxe?mac=14:DA:E9:DF:B0:02&unlink=true unlinks
 """
 
 
-
+from datetime import datetime
 import os
 
 import falcon
@@ -39,6 +39,8 @@ class PXEResource:
         """Handles GET requests"""
         mac_addr = req.get_param('mac', required=True)
         unlink = req.get_param_as_bool('unlink') or False
+        print "%s: MAC=%s ACTION=%s" % (str(datetime.now()), mac_addr.lower(),
+                                        str(unlink))
         dst = os.path.join(dirname, '01-' + mac_addr.lower().replace(':','-'))
         try:
             if unlink:
@@ -49,7 +51,6 @@ class PXEResource:
             pass
 
         resp.status = falcon.HTTP_200
-        resp.body = ('\n done :) %s %s \n\n' % (mac_addr, str(unlink)))
 
 app = api = falcon.API()
 
